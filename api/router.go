@@ -27,4 +27,9 @@ func Register(router *gin.Engine) {
 
 	// openai embeddings
 	router.POST("/v1/embeddings", EmbeddingProxyHandler)
+
+	// Keep-alive endpoint for uptime monitoring
+	router.GET("/ping", func(c *gin.Context) {
+		c.String(http.StatusOK, "pong")
+	})
 }
